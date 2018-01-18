@@ -39,6 +39,9 @@ public class Generator extends JFrame{
         int[] suitableMaxSize = getSuitableSizeMaxRect();
         int[] importantPointsX = new int[]{xDisplacement, xDisplacement + x, xDisplacement + x, xDisplacement, xDisplacement + (int)(x/2)};
         int[] importantPointsY = new int[]{yDisplacement, yDisplacement, y + yDisplacement, y + yDisplacement, yDisplacement + (int)(y/2)};
+        int recoedx1;
+        int recoedy1;
+
 
         g.setColor(Color.red);
         g.drawRect(xDisplacement,yDisplacement,suitableMaxSize[0],suitableMaxSize[1]);
@@ -47,8 +50,11 @@ public class Generator extends JFrame{
             g.drawLine(importantPointsX[i],importantPointsY[i],importantPointsX[4],importantPointsY[4]);
         }
 
+        g.drawLine(importantPointsX[0],importantPointsY[0],50,getY(importantPointsX[4],importantPointsY[4],importantPointsX[3],importantPointsY[3],50));
+        recoedx1 = 50;
+        recoedy1 = getY(importantPointsX[4],importantPointsY[4],importantPointsX[3],importantPointsY[3],recoedx1);
 
-
+        g.drawLine(recoedx1,recoedy1,getX(importantPointsX[0],importantPointsY[0],importantPointsX[4],importantPointsY[4],280),280);
 
 
 
@@ -71,6 +77,24 @@ public class Generator extends JFrame{
             result = new int[]{x,(int)(x/yFactor)};
         }
         return result;
+    }
+
+    public int getY(int x1, int y1, int x2, int y2, int x){
+        int a = x-x1;
+        int b = y2-y1;
+        int c = x2- x1;
+
+        System.out.println("x - x1: " + a  + ", y2 - y1: " + b + ", x2 - x1: " + c + ", y1: " + y1 + "Y: " + (a*b/c + y1));
+        return (a*b/c + y1);
+    }
+
+    public int getX(int x1, int y1, int x2, int y2, int y){
+        int a = y - y1;
+        int b = x2 - x1;
+        int c = y2 - y1;
+
+        System.out.println("y - y1: " + a  + ", x2 - x1: " + b + ", y2 - y1: " + c + ", x1: " + y1 + "X: " + (a*b/c + x1));
+        return (a*b/c + x1);
     }
 
     public static void main(String[] args) {
