@@ -58,6 +58,7 @@ public class Generator extends JFrame{
 
 
 
+
         //Logs
         System.out.println(suitableMaxSize.length);
         System.out.println(suitableMaxSize[0]);
@@ -84,7 +85,7 @@ public class Generator extends JFrame{
         int b = y2-y1;
         int c = x2- x1;
 
-        System.out.println("x - x1: " + a  + ", y2 - y1: " + b + ", x2 - x1: " + c + ", y1: " + y1 + "Y: " + (a*b/c + y1));
+        System.out.println("x - x1: " + a  + ", y2 - y1: " + b + ", x2 - x1: " + c + ", y1: " + y1 + ", Y: " + (a*b/c + y1));
         return (a*b/c + y1);
     }
 
@@ -93,8 +94,16 @@ public class Generator extends JFrame{
         int b = x2 - x1;
         int c = y2 - y1;
 
-        System.out.println("y - y1: " + a  + ", x2 - x1: " + b + ", y2 - y1: " + c + ", x1: " + y1 + "X: " + (a*b/c + x1));
+        System.out.println("y - y1: " + a  + ", x2 - x1: " + b + ", y2 - y1: " + c + ", x1: " + y1 + ", X: " + (a*b/c + x1));
         return (a*b/c + x1);
+    }
+
+    public int getDistanceFromTwoPoints(int x1, int y1, int x2, int y2){
+        int a = (x1 - x2) * (x1 - x2);
+        int b = (y1 - y2) * (y1 - y2);
+
+        System.out.println("x1 - x2 power of 2: " + a + ", y1 - y2 power of 2: " + b + ", result: " + (int)Math.sqrt(a+b));
+        return (int)Math.sqrt(a+b);
     }
 
     public static void main(String[] args) {
